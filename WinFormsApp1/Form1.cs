@@ -5,23 +5,15 @@ namespace WinFormsApp1
         public Form1()
         {
             InitializeComponent();
-            Button colorButton = new Button();
-            colorButton.BackColor = Color.White;
-            colorButton.Text = "Цвет фона";
-            colorButton.Size = new System.Drawing.Size(150, 50);
-            colorButton.Location = new System.Drawing.Point(100, 100);
-
-            colorButton.Click += new EventHandler(ColorButton_Click);
-
-            this.Controls.Add(colorButton);
+            InitializeComponent();
+            this.FormClosing += Form1_FormClosing; 
         }
-        private void ColorButton_Click(object sender, EventArgs e)
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Random rand = new Random();
-            int r = rand.Next(256); 
-            int g = rand.Next(256); 
-            int b = rand.Next(256);
-            this.BackColor = Color.FromArgb(r, g, b);
+            Form2 form2 = new Form2();
+            form2.ShowDialog(); 
+            this.Dispose();
         }
     }
 }
